@@ -5,112 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PaaPaaKeiji V1.3 - Evolution!!! -</title>
     <style>
-        /* 全体の基本デザイン */
+        /* 基本デザイン */
         body {
-            margin: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #4A76D4; /* 背景の青 */
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #4A76D4; color: white;
+            display: flex; flex-direction: column; align-items: center; min-height: 100vh;
         }
-
-        /* ヘッダー・ナビゲーション */
         header {
-            width: 100%;
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.1);
+            width: 100%; padding: 20px 0; display: flex;
+            justify-content: space-around; align-items: center; background: rgba(0, 0, 0, 0.1);
         }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .title-section { text-align: center; margin: 40px 0; }
+        .title-section h1 { font-size: 48px; margin: 0; }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 14px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover { opacity: 0.7; text-decoration: underline; }
-
-        /* メインタイトル */
-        .title-section {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .title-section h1 {
-            font-size: clamp(32px, 8vw, 48px); /* レスポンシブ対応 */
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        /* ★「今日は何の日」埋め込みボックス ★ */
+        /* 「今日は何の日」ウィジェット */
         .anniversary-container {
-            width: 90%;
-            max-width: 400px;
-            background-color: #C2D1F0; /* ウィジェットの薄い青 */
-            border-radius: 12px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            overflow: hidden; /* iframeのはみ出し防止 */
-            border: 2px solid rgba(255,255,255,0.3);
+            width: 90%; max-width: 500px;
+            background-color: #C2D1F0; border-radius: 12px;
+            margin-bottom: 40px; overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
+        .anniversary-frame { width: 100%; height: 160px; border: none; display: block; }
 
-        /* ウィジェット用のiframe */
-        .anniversary-frame {
-            width: 100%;
-            height: 150px; /* 中身のHTMLに合わせて調整してくれ */
-            border: none;
-            display: block;
-        }
-
-        /* 掲示板（GAS）埋め込みエリア */
+        /* 掲示板（GAS）メイン */
         .board-container {
-            width: 95%;
-            max-width: 1000px;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-            margin-bottom: 50px;
+            width: 95%; max-width: 1000px; background: white;
+            border-radius: 15px; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4); margin-bottom: 50px;
         }
+        .board-frame { width: 100%; height: 800px; border: none; display: block; }
 
-        .board-frame {
-            width: 100%;
-            height: 1000px; /* 掲示板の高さ */
-            border: none;
-            display: block;
+        /* ★ 下部情報セクション（スクショの内容を再現） ★ */
+        .info-section {
+            width: 90%; max-width: 1000px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px; border-radius: 15px;
+            margin-bottom: 50px; line-height: 1.8;
+            font-size: 14px;
         }
-
-        footer {
-            margin-top: auto;
-            padding: 20px;
-            font-size: 12px;
-            opacity: 0.7;
-        }
+        .info-section h2 { border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 5px; margin-top: 30px; }
+        .info-section ul { list-style: none; padding: 0; }
+        .info-section li::before { content: "・"; }
+        .link-text { color: #FFEB3B; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">PaaPaaKeiji</div>
+        <div style="font-size: 24px; font-weight: bold;">PaaPaaKeiji</div>
         <nav>
             <a href="index.html">掲示板トップ</a>
-            <a href="#">スマホ版</a>
-            <a href="#">お問い合わせ</a>
-            <a href="#">Q&A</a>
+            <a href="mobile.html">スマホ版</a>
+            <a href="contact.html">お問い合わせ</a>
+            <a href="qa.html">Q&A</a>
         </nav>
     </header>
 
@@ -120,24 +68,44 @@
     </div>
 
     <div class="anniversary-container">
-        <iframe 
-            src="anniversary.html" 
-            class="anniversary-frame"
-            scrolling="no">
-        </iframe>
+        <iframe src="anniversary.html" class="anniversary-frame" scrolling="no"></iframe>
     </div>
 
     <div class="board-container">
-        <iframe 
-            src="https://script.google.com/macros/s/AKfycbxW13-vlQ_YtkjKSUKFYjORmwi8ZIS7kK05cCZw5ehcG9ToR-fdAu_U2N-S-5n-dVTO/exec" 
-            class="board-frame"
-            allow="clipboard-write">
-        </iframe>
+        <iframe src="ここに君のGASのURL" class="board-frame" allow="clipboard-write"></iframe>
     </div>
 
-    <footer>
-        &copy; 2026 PaaPaaKeiji Evolution!!!
-    </footer>
+    <div class="info-section">
+        <h2>更新内容</h2>
+        <ul>
+            <li>V1.0 リリース (26/2/5)</li>
+            <li>V1.1 日替わりユーザーIDを実装(8文字) (26/2/5)</li>
+            <li>V1.2 スレッド&レスUI 大幅なUI 変更 AAモード追加 !omikuji 追加 並び替え 編集 Goodボタン 文字装飾β (26/2/7) UIデザイン追加 (26/2/12)</li>
+            <li>V1.3 Evolution!!! Update (今ここ)</li>
+        </ul>
 
+        <h2>規約</h2>
+        <p>常識の範囲内で投稿を行ってください。投稿を削除してもログで見れますので 投稿内容には十分ご注意を。<br>
+        個人を特定できる情報などの投稿はおやめください。不適切な内容や画像を送信しないでください。<br>
+        個人が運営してますから、意味のない連騰や画像連投はGoogleドライブの容量不足につながるのでご遠慮ください。<br>
+        また、大容量な画像ファイルの添付はおやめください。(10MB以下でお願いします。)<br>
+        悪質な投稿を発見次第削除します。</p>
+
+        <h2>仕様</h2>
+        <ul>
+            <li>Gemini3 で作成しました。</li>
+            <li>通報数が6回になるとそのメッセージが削除されます。</li>
+            <li>同じデバイスで投稿したものは削除できます(管理ログには残ります)</li>
+            <li>投稿に返信もできます。</li>
+            <li>名前を空白にすると「名無し」で投稿されます。</li>
+            <li>日替わりで各アクセスしてる端末にユーザーIDが割り当てられます。[日替わりユーザーID]</li>
+            <li>管理人には特別なIDが割り当てられています。</li>
+        </ul>
+
+        <p>掲示板の内容をLINEで配信！(1ヶ月200件まで)<br>
+        <a href="https://line.me/R/ti/p/@643ziias" class="link-text">https://line.me/R/ti/p/@643ziias</a></p>
+    </div>
+
+    <footer style="padding:20px; opacity:0.7;">&copy; 2026 PaaPaaKeiji Evolution!!!</footer>
 </body>
 </html>
