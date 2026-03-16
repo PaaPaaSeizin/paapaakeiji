@@ -28,21 +28,43 @@
         }
         .anniversary-frame { width: 100%; height: 160px; border: none; display: block; }
 
-        /* 掲示板（GAS）メイン */
+        /* 掲示板（GAS）メイン枠 */
         .board-container {
-            width: 95%; max-width: 1000px; background: white;
+            width: 95%; max-width: 1000px; 
+            background: #000; /* 読み込み中は黒（Windows風） */
             border-radius: 15px; overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.4); margin-bottom: 50px;
+            position: relative;
+            /* ★縦方向にリサイズ可能にする設定 */
+            resize: vertical; 
+            height: 800px; /* 初期値 */
+            min-height: 400px;
         }
-        .board-frame { width: 100%; height: 800px; border: none; display: block; }
 
-        /* ★ 下部情報セクション（スクショの内容を再現） ★ */
+        /* 読み込み中画面（Windows起動風） */
+        .loading-screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: black; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 10;
+        }
+        .loader-dot {
+            width: 40px; height: 40px; border: 4px solid #fff;
+            border-top: 4px solid transparent; border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .board-frame { 
+            width: 100%; height: 100%; /* 親要素に合わせて伸縮 */
+            border: none; display: block; background: white;
+        }
+
+        /* 下部情報セクション */
         .info-section {
             width: 90%; max-width: 1000px;
             background: rgba(255, 255, 255, 0.1);
             padding: 30px; border-radius: 15px;
-            margin-bottom: 50px; line-height: 1.8;
-            font-size: 14px;
+            margin-bottom: 50px; line-height: 1.8; font-size: 14px;
         }
         .info-section h2 { border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 5px; margin-top: 30px; }
         .info-section ul { list-style: none; padding: 0; }
@@ -70,8 +92,19 @@
         <iframe src="anniversary.html" class="anniversary-frame" scrolling="no"></iframe>
     </div>
 
-    <div class="board-container">
-        <iframe src="https://script.google.com/macros/s/AKfycbxW13-vlQ_YtkjKSUKFYjORmwi8ZIS7kK05cCZw5ehcG9ToR-fdAu_U2N-S-5n-dVTO/exec" class="board-frame" allow="clipboard-write"></iframe>
+    <div class="board-container" id="boardContainer">
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loader-dot"></div>
+            <div style="font-size: 18px; letter-spacing: 2px;">Windows を起動中...</div>
+        </div>
+        
+        <iframe 
+            src="https://script.google.com/macros/s/AKfycbxW13-vlQ_YtkjKSUKFYjORmwi8ZIS7kK05cCZw5ehcG9ToR-fdAu_U2N-S-5n-dVTO/exec" 
+            class="board-frame" 
+            id="boardFrame"
+            allow="clipboard-write"
+            onload="hideLoading()">
+        </iframe>
     </div>
 
     <div class="info-section">
@@ -79,8 +112,8 @@
         <ul>
             <li>V1.0 リリース (26/2/5)</li>
             <li>V1.1 日替わりユーザーIDを実装(8文字) (26/2/5)</li>
-            <li>V1.2 スレッド&レスUI 大幅なUI 変更 AAモード追加 !omikuji 追加 並び替え 編集 Goodボタン 文字装飾β (26/2/7) UIデザイン追加 (26/2/12)</li>
-            <li>V1.3 Evolution!!! Update (今ここ)</li>
+            <li>V1.2 スレッド&レスUI 大幅なUI 変更 AAモード追加 !omikuji 追加 並び替え 編集 Goodボタン 文字装飾β (26/2/7)</li>
+            <li>V1.3 Evolution!!! Update: GitHub Pages移行 / 起動画面実装 / 縦リサイズ機能追加 (26/3/16)</li>
         </ul>
 
         <h2>規約</h2>
@@ -92,19 +125,30 @@
 
         <h2>仕様</h2>
         <ul>
-            <li>Gemini3 で作成しました。</li>
+            <li>Gemini3 Flash で作成しました。</li>
             <li>通報数が6回になるとそのメッセージが削除されます。</li>
-            <li>同じデバイスで投稿したものは削除できます(管理ログには残ります)</li>
+            <li>同じデバイスで投稿したものは削除できます</li>
             <li>投稿に返信もできます。</li>
             <li>名前を空白にすると「名無し」で投稿されます。</li>
-            <li>日替わりで各アクセスしてる端末にユーザーIDが割り当てられます。[日替わりユーザーID]</li>
-            <li>管理人には特別なIDが割り当てられています。</li>
+            <li>日替わりで各端末にユーザーIDが割り当てられます。</li>
         </ul>
 
-        <p>掲示板の内容をLINEで配信！(1ヶ月200件まで)<br>
+        <p>掲示板の内容をLINEで配信！<br>
         <a href="https://line.me/R/ti/p/@643ziias" class="link-text">https://line.me/R/ti/p/@643ziias</a></p>
     </div>
 
     <footer style="padding:20px; opacity:0.7;">&copy; 2026 PaaPaaKeiji Evolution!!!</footer>
+
+    <script>
+        // GASの読み込みが完了したら起動画面を消す
+        function hideLoading() {
+            const screen = document.getElementById('loadingScreen');
+            screen.style.transition = "opacity 0.5s";
+            screen.style.opacity = "0";
+            setTimeout(() => {
+                screen.style.display = "none";
+            }, 500);
+        }
+    </script>
 </body>
 </html>
