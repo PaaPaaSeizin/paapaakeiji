@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ - PaaPaaKeiji Evolution!!!</title>
+    <style>
+        body {
+            margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #4A76D4; color: white;
+            display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+        }
+        header {
+            width: 100%; padding: 20px 0; display: flex;
+            justify-content: space-around; align-items: center; background: rgba(0, 0, 0, 0.1);
+        }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+
+        .container {
+            width: 90%; max-width: 600px; margin: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px; border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 { margin-bottom: 20px; font-size: 28px; }
+        p { line-height: 1.8; margin-bottom: 30px; font-size: 15px; opacity: 0.9; }
+
+        /* Googleフォームへ飛ばすボタン */
+        .form-button {
+            display: inline-block;
+            background-color: #FFEB3B; /* 目立つ黄色 */
+            color: #333;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .form-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background-color: #fff176;
+        }
+
+        .note {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #eee;
+            text-align: left;
+            background: rgba(0,0,0,0.1);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        footer { margin-top: auto; padding: 20px; opacity: 0.7; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-size: 24px; font-weight: bold;">PaaPaaKeiji</div>
+        <nav>
+            <a href="index.html">掲示板トップ</a>
+            <a href="mobile.html">スマホ版</a>
+            <a href="contact.html">お問い合わせ</a>
+            <a href="qa.html">Q&A</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>お問い合わせ</h1>
+        <p>
+            バグ報告、機能要望、荒らしの通報などは<br>
+            以下の公式Googleフォームより受け付けています。<br>
+            画像添付が必要な場合もこちらから可能です。
+        </p>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSchppIwT4JPwNXxSFEoakKwaiXhtzMfa7wzpMMUBL_-xChfhQ/viewform?usp=header" class="form-button" target="_blank">
+            お問い合わせフォームを開く
+        </a>
+
+        <div class="note">
+            <strong>【注意事項】</strong><br>
+            ・Googleフォームの仕様上、画像のアップロードにはGoogleアカウントへのログインが必要になる場合があります。<br>
+            ・返信が必要な内容の場合、メールアドレスの入力をお願いします。<br>
+            ・すべての報告に対応をお約束するものではありませんが、管理人とGeminiで必ず目を通します！
+        </div>
+    </div>
+
+    <footer>&copy; 2026 PaaPaaKeiji Evolution!!!</footer>
+
+</body>
+</html>
