@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q&A - PaaPaaKeiji Evolution!!!</title>
+    <style>
+        body {
+            margin: 0; font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #4A76D4; color: white;
+            display: flex; flex-direction: column; align-items: center; min-height: 100vh;
+        }
+        header {
+            width: 100%; padding: 20px 0; display: flex;
+            justify-content: space-around; align-items: center; background: rgba(0, 0, 0, 0.1);
+        }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        
+        .container {
+            width: 90%; max-width: 800px; margin: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 { text-align: center; border-bottom: 2px solid rgba(255,255,255,0.3); padding-bottom: 10px; }
+
+        .qa-item {
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px; border-radius: 10px;
+            border-left: 5px solid #FFEB3B;
+        }
+
+        .question {
+            font-weight: bold; font-size: 18px; color: #FFEB3B;
+            margin-bottom: 10px; display: flex; align-items: flex-start;
+        }
+        .question::before { content: "Q. "; margin-right: 5px; }
+
+        .answer {
+            font-size: 15px; line-height: 1.6; color: #f0f0f0;
+            white-space: pre-wrap; /* 改行を反映させる */
+        }
+        .answer::before { content: "A. "; font-weight: bold; color: #fff; }
+
+        .highlight { color: #FFEB3B; font-weight: bold; }
+
+        footer { margin-top: auto; padding: 20px; opacity: 0.7; font-size: 12px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="font-size: 24px; font-weight: bold;">PaaPaaKeiji</div>
+        <nav>
+            <a href="index.html">掲示板トップ</a>
+            <a href="mobile.html">スマホ版</a>
+            <a href="contact.html">お問い合わせ</a>
+            <a href="qa.html">Q&A</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>よくある質問 (Q&A)</h1>
+
+        <div class="qa-item">
+            <div class="question">画像が開けません</div>
+            <div class="answer">安定性重視のため、画像は別タブで開かれます。ChromeやSafariなどのブラウザアプリでご利用ください。また、[画像を開く]ボタンを長押し、右クリック等して直接リンクを開くことで閲覧できるかもしれません。</div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">投稿(レス)完了までが長いです</div>
+            <div class="answer">本サービスは完全無料で動作しています。そのため、処理に時間がかかります。また、画像を添付した場合、そのデータをGoogleドライブに保存する処理もあるので、さらに時間がかかります。30秒ほど待っても投稿されなかった場合、ご連絡ください。</div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">UI（表示）が見切れるなどの問題が起こります</div>
+            <div class="answer">機器によってレイアウト再現に差があり、表示が一部見切れたりする場合があります。PCであればブラウザの縦横比やサイズを調整してください。スマホであればPC版サイトなどの設定を有効にしてください。（表示が小さくなり全て見えます）</div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">荒らしや迷惑行為にはどうすればいいですか</div>
+            <div class="answer">相手を刺激せず、通報をしてください。緊急性の高い（個人情報の記載や荒らし行為の連投、規模が大きい等）場合は発見次第、運営のSNSや公式Discordサーバー、お問い合わせフォームにご連絡ください。</div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">宣伝していいですか/動画やSNS投稿内で取り扱っていいですか</div>
+            <div class="answer">全然していいです。とてもありがたいですし、運営の励みになります。</div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">セキュリティや安全性はどうなっていますか</div>
+            <div class="answer">セキュリティや安全性はネットサービスにおいて非常に大事です。当サービスでは一般的に見れる部分（フロントエンド側）には一切重要情報を保管しておりません。ですので、基本的にサービスを乗っ取られたり悪用されることはないと思われます。
+また、利用者の個人情報やIPアドレスなどは一切取り扱っておりません。通常の8文字日替わりIDとは違う、利用者の端末に紐づいたユーザーIDも厳重に管理されています。投稿内容を利用した攻撃などにも対策をしており、サービス自体も保護されています。</div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">この掲示板に何のサービスを使っていますか</div>
+            <div class="answer"><span class="highlight">GAS:</span> 掲示板のすべて。Webアプリとして稼働。
+<span class="highlight">スプレッドシート:</span> 掲示板のログ記録。
+<span class="highlight">Googleドライブ:</span> 添付画像の保管場所。
+<span class="highlight">GitHub Pages:</span> このサイト自体のホスティング（NEW!）</div>
+        </div>
+
+        <div class="qa-item">
+            <div class="question">無料で制限はどのくらいですか</div>
+            <div class="answer">主な制限は以下の通りです：
+・<span class="highlight">LINE自動送信:</span> 月間200件まで。
+・<span class="highlight">GAS 総実行時間:</span> 1日90分まで（画像付き投稿約180件分）。
+・<span class="highlight">同時実行数:</span> 30件まで。
+・<span class="highlight">URL Fetch:</span> 1日2万回まで。
+まとめると、LINE配信は上限が厳しいためDiscord推奨、投稿は1日180件程度までなら快適に動きます。</div>
+        </div>
+
+        </div>
+
+    <footer>&copy; 2026 PaaPaaKeiji Evolution!!!</footer>
+
+</body>
+</html>
